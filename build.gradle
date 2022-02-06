@@ -1,0 +1,32 @@
+plugins {
+    //springframework.boot, spring.dependency 관련된 플러그인 추가
+    id 'org.springframework.boot' version '2.4.2'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+//우리가 사용할 의존성 라이브러리 추가
+dependencies {
+    //우리가 구현할 'REST-API' 의 구현을 위한 라이브러리
+    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+    //JPA 관련 기능을 사용하기 위한 라이브러리
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    //'h2데이터베이스'의 의존성도 추가
+    runtimeOnly 'com.h2database:h2'
+
+    //lombok 오류 해결
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+}
+
+test {
+    useJUnitPlatform()
+}
